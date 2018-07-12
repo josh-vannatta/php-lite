@@ -1,9 +1,9 @@
 <?php
-  $vendor_loc = $base_url . '../vendor/';
+  $vendor_loc = $base_url . 'app/kernel/';
   $routes = $vendor_loc.'routes.php';
   $core = $vendor_loc.'core.php';
   require $vendor_loc.'helpers.php';
-  require $vendor_loc.'autoload.php';
+  require $base_url . 'vendor/autoload.php';
 
   App::bind('config', require $vendor_loc.'config.php');
 

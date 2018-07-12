@@ -1,0 +1,440 @@
+.--responsive label {
+  font-weight: 600 !important;
+  top: 2px !important;
+}
+.--responsive.is-focused label {
+  color: #aaa;
+}
+
+.form-control[disabled], fieldset[disabled] .form-control {
+    cursor: text !important;
+}
+
+.--responsive.form-group {
+  padding: 0 !important;
+}
+
+.--responsive.checkbox, .--responsive.radio-box {
+  padding-left: 31px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  small {
+    position: absolute;
+    margin-top: -2px;
+  }
+}
+
+.--responsive label {
+  display: none !important;
+  position: absolute;
+  margin: 5px 15px 0;
+  font-size: 11px;
+  color: darkgrey;
+  padding: 2px 10px 0 0;
+  border-radius: 0 0 5px 0;
+}
+
+.--responsive.--textarea label {
+  box-shadow: 0 -4px 0 white;
+  padding-bottom: 5px ;
+  background: white;
+  width: 94%;
+}
+
+@media screen and (max-width: 900px ) {
+  .--responsive.--textarea label {
+    width: 90%;
+  }
+}
+
+.--responsive .dropdown button {
+  height: 100%;
+  min-width: 130px;
+  max-height: 50px;
+  text-align: left;
+  padding: 0 15px;
+  position: relative;
+  background: white !important;
+  border-color: #ccc !important;
+  box-shadow: 0 0 !important;
+  outline: 0 !important;
+}
+
+.--responsive .dropdown .caret {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 21px 12px;
+}
+
+.--responsive .dropdown-menu {
+  padding: 0;
+  margin: -2px 0;
+  box-shadow: 0 0;
+  min-width: max-content;
+}
+
+.--responsive .dropdown-menu a {
+  padding: 10px 15px;
+  box-shadow: 0 0 rgba(0,0,0,0);
+  width: 100;
+}
+
+.--responsive .dropdown-menu a:hover {
+  background: #e2e2e2;
+}
+
+.--responsive .dropdown-menu a.active {
+  color: white;
+  background: #358fde;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.--responsive.active label {
+  display: block !important;
+}
+
+.--responsive input, .--responsive textarea, .--responsive .dropdown-toggle {
+  border: 1px solid #ccc;
+  background: none !important;
+}
+
+.--responsive input {
+    height: 50px !important;
+}
+
+.--responsive .form-control {
+  transition: .1s !important;
+  padding: 10px 15px !important;
+  border-radius: 2px !important;
+  box-shadow: 0 0 0!important;
+}
+
+.--responsive.active input {
+  padding: 12px 15px 0 !important;
+}
+
+.--responsive.active textarea {
+  padding: 25px 15px !important;
+}
+
+.--responsive.dropdown {
+    width: fit-content;
+}
+
+.--responsive .dropdown-toggle {
+  min-height: 50px !important;
+  text-transform: none !important;
+  font-weight: normal;
+  border: 1px solid #ccc;
+  min-width: 200px;
+  padding-left: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.--responsive.active .dropdown-toggle span {
+  position: relative;
+  top: 6px;
+}
+
+.--responsive .dropdown-menu {
+  width: 100% !important;
+  background: white !important;
+  border: 1px solid #ccc !important;
+}
+
+.--responsive.btn {
+  text-transform: none !important;
+  padding: .7rem 2rem !important;
+}
+
+/* LOGIN PAGE */
+
+.--login-body {
+  background: linear-gradient(to right, #272e3c, #1a222f);
+}
+.--login-body header {
+  padding: 5px 10px;
+}
+.--login-body header a {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  background: #4c5158;
+}
+
+.--login-body header a:hover {
+  background: #b72c2c;
+}
+
+.--login-body main {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 100px 10px 80px;
+}
+
+.--login-module {
+    background: white;
+    border-radius: 5px;
+    padding: 60px 40px;
+    position: relative;
+    letter-spacing: 0px;
+    text-align: center;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14),
+        0 3px 14px 2px rgba(0,0,0,0.12),
+        0 5px 5px -3px rgba(0,0,0,0.3);
+}
+
+@media only screen and (max-width: 430px) {
+  .--login-module {
+    padding: 50px 25px;
+  }
+}
+
+.--login-module .--secure {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    top: -45px;
+    background: #303640;
+    padding: 20px;
+    border: 1px solid white;
+    letter-spacing: 0px;
+    box-shadow: inset 0 8px 10px 1px rgba(0,0,0,0.14),
+    inset 0 3px 14px 2px rgba(0,0,0,0.12),
+    inset 0 5px 5px -3px rgba(0,0,0,0.3);
+}
+
+.--login-module .--secure i {
+  font-size: 40px;
+  color: white;
+}
+
+.--login-module h3 {
+  margin-bottom: 0;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+
+.--login-module form {
+  letter-spacing: 0;
+  padding: 15px 0;
+}
+
+.--login-module form button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+input:checked + .slider {
+  background-color: $primary;
+  box-shadow: 0 0 0 1px #2671d4;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(35px);
+  -ms-transform: translateX(35px);
+  transform: translateX(35px);
+  border: 0px solid #ccc;
+}
+
+input:checked + .slider:after {
+  content: 'ON';
+  right: 35px;
+  color: white;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.--options-group{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.--toggle-group {
+  margin-right: 60px;
+  margin-bottom: 5px;
+  min-width: 160px;
+}
+
+.--toggle-group p {
+  margin-bottom: 5px;
+}
+
+/* TOGGLE SWITCH */
+.switch {
+  margin-top: 5px;
+  position: relative;
+  display: inline-block;
+  width: 65px;
+  height: 28px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: 0 0 0 1px #c4cad4;
+  background-color: #e5e7ea;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 5px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  z-index: 2;
+  border: 1px solid #ccc;
+}
+
+.slider:after {
+  position: absolute;
+  content: "OFF";
+  right: 9px;
+  padding: 3px;
+  font-size: 13px;
+  top: 6px;
+  color: rgba(0,0,0,0.3);
+  -webkit-transition: .4s;
+  transition: .4s;
+  z-index: 1;
+}
+
+input:checked + .slider {
+  background-color: $primary;
+  box-shadow: 0 0 0 1px $primary;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px  $primary;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(35px);
+  -ms-transform: translateX(35px);
+  transform: translateX(35px);
+  border: 0px solid #ccc;
+}
+
+input:checked + .slider:after {
+  content: 'ON';
+  right: 35px;
+  color: white;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.--options-group{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.--toggle-group {
+  margin-right: 60px;
+  margin-bottom: 5px;
+  min-width: 160px;
+}
+
+.--toggle-group p {
+  margin-bottom: 5px;
+}
+
+
+
+/* HELPERS */
+.--helper-block * {
+  display: inline;
+}
+
+.--helper {
+  position: relative;
+}
+
+.--helper span {
+  border-radius: 50%;
+  padding: 0 5px;
+  margin: 2px;
+  border: 1px solid #a7acb5;
+  font-size: 12px;
+  font-weight: 800;
+  color: #afafaf;
+  cursor: pointer;
+  top: -5px;
+}
+
+.--helper-msg {
+  display: none;
+  position: absolute;
+  opacity: 0;
+  left: 25px;
+  top: 2px;
+  min-width: 250px;
+  color: white;
+  background: rgba(30, 35, 45, 0.8);
+  transition: .2s ease !important;
+  padding: 5px 10px;
+  z-index: 5;
+}
+
+.--helper-msg.--active {
+  display: inline;
+  opacity: 1;
+}
+
+.--feedback {
+  padding: 5px 0 0px;
+}
+
+.--feedback .--message {
+  margin: 0 0 10px;
+  background: #ffebeb;
+  border-radius: 2px;
+  border: 1px solid #eeb2b4;
+  padding: 10px 15px;
+  color: #ea5b5b;
+}

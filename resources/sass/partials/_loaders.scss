@@ -1,0 +1,31 @@
+.loading-overlay {
+  background: rgba(255,255,255,.5);
+  z-index: 20;
+}
+
+.loader.top-bar {
+  height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #ddd;
+}
+.loader.top-bar:before{
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  background-color: #2980b9;
+  animation: loading-bar 2s linear infinite;
+}
+
+@keyframes loading-bar {
+    from {left: -200px; width: 30%;}
+    50% {width: 30%;}
+    70% {width: 70%;}
+    80% { left: 50%;}
+    95% {left: 120%;}
+    to {left: 100%;}
+}

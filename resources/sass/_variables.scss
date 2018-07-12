@@ -1,0 +1,15 @@
+// Colors
+
+// Typography
+$font-family-sans-serif: "Roboto", sans-serif;
+$text-regular: #3a3a3a;
+$link: #2c9ab7;
+
+// Base
+$body-bg: #f3f3f3;
+$overlay: rgba(8, 13, 15, 0.5);
+
+// Functions
+@function transition($speed) {
+  @return all $speed cubic-bezier(0.25, 0.8, 0.25, 1);
+}

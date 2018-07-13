@@ -2,16 +2,6 @@
 class PersistentSessionHandler extends PDOSessionHandler
 {
     use PersistentProperties;
-
-    public function __construct()
-    {
-      $this->cookie = App::get('config')['auth']['session']['name'];
-      $this->table_users = App::get('config')['auth']['model'];
-      $this->col_akey = App::get('config')['auth']['session']['key'];
-      $this->sess_uname =  App::get('config')['auth']['session']['user'];
-      $this->sess_ukey = App::get('config')['auth']['session']['key'];
-    }
-
     /**
      * Writes the session data to the database
      *

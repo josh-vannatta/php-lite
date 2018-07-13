@@ -150,4 +150,11 @@ class QueryBuilder
     }
   }
 
+  public function contains($table)
+  {
+    $query = $this->pdo->prepare("SHOW TABLES LIKE '$table'");
+    $query->execute();
+    return count($query->fetchAll(PDO::FETCH_COLUMN)) > 0;
+  }
+
 }

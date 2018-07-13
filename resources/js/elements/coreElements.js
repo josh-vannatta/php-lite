@@ -15,6 +15,9 @@ const coreElements = (function() {
         $('.sticky-footer').innerHeight() + 'px'
       )
     });
+
+    $('#app-login-select').click(()=>location.href="/login");
+    $('#app-register-select').click(()=>location.href="/register");
   }
 
 }());

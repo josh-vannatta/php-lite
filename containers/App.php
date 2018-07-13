@@ -76,7 +76,7 @@ class App
     if (isset(static::$registry['config']['auth']['session'])) {
       $session = static::$registry['config']['auth']['session'];
       if ($key == '') return $session;
-      if (isset($session[$key])) return $session->$key;
+      if (isset($session[$key])) return $session[$key];
     }
     return false;
   }

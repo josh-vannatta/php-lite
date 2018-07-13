@@ -14,7 +14,13 @@ class PDOSessionHandler implements \SessionHandlerInterface
 
   public function __construct(\PDO $db, $useTransactions = true)
   {
+
     $this->db = $db;
+    $this->cookie = App::get('config')['auth']['session']['name'];
+    $this->table_users = App::get('config')['auth']['model'];
+    $this->col_akey = App::get('config')['auth']['session']['key'];
+    $this->sess_uname =  App::get('config')['auth']['session']['user'];
+    $this->sess_ukey = App::get('config')['auth']['session']['key'];
     if ($this->db->getAttribute(\PDO::ATTR_ERRMODE) !== \PDO::ERRMODE_EXCEPTION) {
         $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }

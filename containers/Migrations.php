@@ -44,7 +44,8 @@ class Migrate
       App::database()->migrate('sessions', [
         'sid' => 'VARCHAR(128) NOT NULL',
         'expiry' => 'INT(11) NOT NULL',
-        'data' => 'TEXT NOT NULL'
+        'data' => 'TEXT NOT NULL',
+        'PRIMARY KEY' => '(sid)'
       ]);
       echo "Session table created!<br />";
     } catch (\Exception $e) {

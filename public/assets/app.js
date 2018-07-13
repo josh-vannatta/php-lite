@@ -185,7 +185,7 @@ eval("/* WEBPACK VAR INJECTION */(function(global) {/* PrismJS 1.15.0\nhttps://p
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"coreElements\", function() { return coreElements; });\nconst coreElements = (function() {\r\n  'use strict';\r\n\r\n  return {\r\n    bind: bind\r\n  }\r\n\r\n  function bind() {\r\n    $('#app').css('padding-bottom',\r\n      $('.sticky-footer').innerHeight() + 'px'\r\n    )\r\n\r\n    $(window).resize(function() {\r\n      $('#app').css('padding-bottom',\r\n        $('.sticky-footer').innerHeight() + 'px'\r\n      )\r\n    });\r\n  }\r\n\r\n}());\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./resources/js/elements/coreElements.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"coreElements\", function() { return coreElements; });\nconst coreElements = (function() {\r\n  'use strict';\r\n\r\n  return {\r\n    bind: bind\r\n  }\r\n\r\n  function bind() {\r\n    $('#app').css('padding-bottom',\r\n      $('.sticky-footer').innerHeight() + 'px'\r\n    )\r\n\r\n    $(window).resize(function() {\r\n      $('#app').css('padding-bottom',\r\n        $('.sticky-footer').innerHeight() + 'px'\r\n      )\r\n    });\r\n\r\n    $('#app-login-select').click(()=>location.href=\"/login\");\r\n    $('#app-register-select').click(()=>location.href=\"/register\");\r\n  }\r\n\r\n}());\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./resources/js/elements/coreElements.js?");
 
 /***/ }),
 

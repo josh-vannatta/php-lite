@@ -15,8 +15,7 @@
     <!-- Search Bar -->
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                 mdl-textfield--floating-label mdl-textfield--align-right">
-      <label class="mdl-button mdl-js-button mdl-button--icon"
-             for="waterfall-exp">
+      <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
         <i class="material-icons">search</i>
       </label>
       <div class="mdl-textfield__expandable-holder">
@@ -30,8 +29,8 @@
     <!-- Account submenu -->
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
         for="demo-menu-lower-right">
-      <li class="mdl-menu__item">Login</li>
-      <li class="mdl-menu__item">Create account</li>
+      <li class="mdl-menu__item" id="app-login-select">Login</li>
+      <li class="mdl-menu__item" id="app-register-select">Create account</li>
       <li disabled class="mdl-menu__item">Sign out</li>
     </ul>
   </div>

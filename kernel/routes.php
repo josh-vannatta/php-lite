@@ -10,8 +10,9 @@
  */
 
 // Login Routes
-  $router->get('register', 'LoginController@index');
-  $router->post('login', 'LoginController@login');
+  $router->get('register', 'LoginController@create');
+  $router->get('login', 'LoginController@index');
+  $router->post('login', 'LoginController@store');
   $router->get('logout', 'LoginController@logout');
   $router->get('login/confirm', 'LoginController@confirm');
 
@@ -34,5 +35,4 @@
   $router->get('', 'HomeController@index');
   $router->get('migrate', 'HomeController@migrate');
   $router->get('migrate-confirm', 'HomeController@migrateConfirm');
-  $router->post('{from}/email', 'PublicController@contactEmail');
   $router->get('error/page/does/not/exist', 'HomeController@error');

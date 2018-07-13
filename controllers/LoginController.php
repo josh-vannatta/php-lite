@@ -4,11 +4,12 @@ class LoginController
 
   public function index()
   {
-    // If admin is logged in direct to dashboard
-    if (session('admin_email') !== false)
-      return Redirect::url('/admin/dashboard');
-    // Else display login page
     App::view('login');
+  }
+
+  public function create()
+  {
+    App::view('register');
   }
 
   public function login()

@@ -53,41 +53,39 @@ App::bind('database',
 );
 
 /* SESSION HANDLER
- * ----------------------
- * We establish the connection to the model
- * responsible for persistant sessions and set timeout.
- * Access session config via App::session(key);
- *
- * Visit {base_url}/session_table/generate to
- * create **fresh** session table;
- */
+* ----------------------
+* We establish the connection to the tables
+* responsible for persistant sessions and set timeout.
+* Access session config via App::session(key);
+*/
 
-// $handler = new PersistentSessionHandler(
-//   $db_connection
-// );
-// session_set_save_handler($handler);
+if (App::database()->contains('sessions') &&
+    App::database()->contains('autologin')) {
+    $handler = new PersistentSessionHandler(
+      $db_connection
+    );
+    session_set_save_handler($handler);
+}
 session_start();
 $_SESSION['active'] = time();
 
 /* AUTHENTICATION
- * ----------------------
- * If the session is authenticated and matches
- * user defined configuration, authenticate.
- * Access authenticated user via App::auth(key)
- */
+* ----------------------
+* If the session is authenticated and matches
+* user defined configuration, authenticate.
+* Access authenticated user via App::auth(key)
+*/
 
-// if (isset($_SESSION['authenticated']) || isset($_SESSION[App::session('name')])) {
-//     App::authenticate(App::session('name'));
-//     $auto_login = new AutoLogin($db_connection);
-//     $auto_login->checkCredentials();
-// }
+if (isset($_SESSION['authenticated']) ||
+    isset($_SESSION[App::session('name')])) {
+  App::authenticate(App::session('name'));
+  $auto_login = new AutoLogin($db_connection);
+  $auto_login->checkCredentials();
+}
 
 /* PASSWORD RESETS
  * ----------------------
  * Clear expired resets in password reset table.
- *
- * Visit {base_url}/password_table/generate to
- * create **fresh** password_resets table;
  */
 
 // clear_resets();

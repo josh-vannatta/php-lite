@@ -51,9 +51,28 @@ class Request
     return $input_data;
   }
 
-  public function contains($value)
+  static public function contains($value)
   {
     return strpos($_SERVER['REQUEST_URI'], $value);
+  }
+
+  static public function equals($value)
+  {
+    return $_SERVER['REQUEST_URI'] === $value;
+  }
+
+  static public function forgeryToken()
+  {
+    if (!isset($_SESSION['csrf_token'])) {
+        $token = md5(uniqid(rand(), TRUE));
+        $_SESSION['csrf_token'] = $token;
+        $_SESSION['csrf_time'] = time();
+    }
+    else
+    {
+        $token = $_SESSION['csrf_token'];
+    }
+    return $token;
   }
 
 }

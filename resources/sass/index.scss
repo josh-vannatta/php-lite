@@ -1,20 +1,17 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons");
+@import url("http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import '~animate.css/animate.min.css';
+@import './bootstrap';
 
 // Variables
 @import "variables";
 
 // Partials
-@import "./partials/reset";
 @import "./partials/base";
-@import "./partials/typography";
-@import "./partials/buttons";
-@import "./partials/forms";
 @import "./partials/form-secure";
-@import "./partials/loaders";
+@import "./partials/header";
 
 // Components
+@import "./content/sections";

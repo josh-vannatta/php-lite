@@ -21,7 +21,7 @@ const passiveElements = (function() {
     });
     // Closers
     $('.passive.close-me').click(function() {
-      $(this).parent().addClass('animated fadeOutRight');
+      $(this).parent().addClass('animated fadeOut');
       setTimeout(()=>$(this).parent().addClass('hidden'), 300);
     })
     // Dropdowns

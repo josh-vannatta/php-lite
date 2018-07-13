@@ -2,11 +2,6 @@
 class LoginController
 {
 
-  public function generate()
-  {
-    echo "Session table created";
-  }
-
   public function index()
   {
     // If admin is logged in direct to dashboard

@@ -44,7 +44,7 @@ class Router
       $this->extractStubs($matches);
       return $this->call( ...explode('@', $action) );
     }
-    throw new Exception('Route undefined');
+    Redirect::url('/error/page/does/not/exist');
   }
 
   protected function extractStubs($uri)

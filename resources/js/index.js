@@ -1,8 +1,4 @@
-// Bundles
-require('popper.js');
-require('bootstrap');
-window.$ = require('jquery');
-require('./helpers/functions');
+require('./bootstrap');
 
 // Modules
 import { ENV } from './env';

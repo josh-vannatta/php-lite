@@ -52,6 +52,17 @@ function generate_token($value)
   return hash('crc32', microtime(true) . mt_rand() . $value);
 }
 
+function csrf_token()
+{
+  $token = App::get('csrf_token');
+  return "<input type='hidden' value='$token' class='hidden'/>";
+}
+
+function base_url()
+{
+  return App::get('config')['app']['base_url'];
+}
+
 function email_connect($sender, $name, $recipient, $subject, $body)
 {
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);

@@ -5,7 +5,6 @@ class Migrate
 
   static public function passwordResets()
   {
-    // Create password resets table
     try {
       App::database()->migrate('password_resets', [
         'token' => 'VARCHAR(128) NOT NULL',
@@ -17,6 +16,7 @@ class Migrate
       dd($e);
     }
   }
+    // Create password resets table
 
   static public function users()
   {

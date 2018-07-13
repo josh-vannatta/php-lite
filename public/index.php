@@ -92,6 +92,14 @@ $_SESSION['active'] = time();
 
 // clear_resets();
 
+/* CSRF TOKEN
+ * ----------------------
+ * Cross site request forgery token generated
+ * accessed via App::get('csrf_token');
+ */
+
+ App::bind('csrf_token', Request::forgeryToken());
+
 /* ROUTES
  * ----------------------
  * Load user-defined routes and populate

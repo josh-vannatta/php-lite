@@ -1,34 +1,51 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="google-signin-client_id" content="1057328742202-ikmjmc9vksnfve0c1vm78i0oopmsbdb7.apps.googleusercontent.com">
-    <meta name="google-signin-scope" content="https://www.googleapis.com/auth/analytics.readonly">
-    <title><?php echo $page_title; ?></title>
-    <link rel="stylesheet" href="/assets/css/master.css">
-    <link rel="stylesheet" href="/assets/css/fonts.css">
-    <link rel="stylesheet" href="/assets/css/admin.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/image/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/image/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/assets/image/favicon/manifest.json">
-    <link rel="mask-icon" href="/assets/image/favicon/safari-pinned-tab.svg" color="#be2021">
-    <link rel="shortcut icon" href="/assets/image/favicon/favicon.ico">
-    <meta name="msapplication-config" content="/assets/image/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-    <script type="text/javascript" rel="javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" rel="javascript" src="/assets/js/admin/bootstrap.min.js"></script>
-    <script type="text/javascript" rel="javascript" src="/assets/js/chart.js"></script>
-    <script type="text/javascript" rel="javascript" src="/assets/js/helper-functions.js"></script>
-    <script type="text/javascript" rel="javascript" src="/assets/js/form-scrubber.js"></script>
-  </head>
-  <body>
-  <div class="admin-container">
-    <header>
-      <?php App::view('partials/sidenav') ?>
-    </header>
-    <main class="admin-viewport --transition">
-      <div class="container">
-        <?php App::view('partials/userinfo') ?>
+<header class="mdl-layout__header --header">
+  <div class="mdl-layout__header-row container rel">
+    <!-- Title -->
+    <a class="flex-center --title mr-5" href="<?= base_url(); ?>/">
+      <div class="--icon mr-2">
+        <img src="<?= base_url(); ?>/assets/favicon/android-chrome-512x512.png" class="w-100"></img>
+      </div>
+      <span class="mdl-layout-title">MVC Lite</span>
+    </a>
+    <!-- Navigation -->
+    <nav class="mdl-navigation mdl-layout--large-screen-only">
+      <?php App::view('partials/navigation') ?>
+    </nav>
+    <div class="mdl-layout-spacer"></div>
+    <!-- Search Bar -->
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
+                mdl-textfield--floating-label mdl-textfield--align-right">
+      <label class="mdl-button mdl-js-button mdl-button--icon"
+             for="waterfall-exp">
+        <i class="material-icons">search</i>
+      </label>
+      <div class="mdl-textfield__expandable-holder">
+        <input class="mdl-textfield__input" type="text" name="sample" id="waterfall-exp">
+      </div>
+    </div>
+    <!-- Account actions  -->
+    <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+      <i class="material-icons">account_circle</i>
+    </button>
+    <!-- Account submenu -->
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+        for="demo-menu-lower-right">
+      <li class="mdl-menu__item">Login</li>
+      <li class="mdl-menu__item">Create account</li>
+      <li disabled class="mdl-menu__item">Sign out</li>
+    </ul>
+  </div>
+  <!-- Tabs -->
+  <?php if (isset($header_tabs)) App::view($header_tabs); ?>
+</header>
+<div class="mdl-layout__drawer --header">
+  <a class="d-flex flex-row align-items-center --title pt-5" style="padding-left: 40px" href="<?= base_url(); ?>/">
+    <div class="--icon mr-2">
+      <img src="<?= base_url(); ?>/assets/favicon/android-chrome-512x512.png" class="w-100"></img>
+    </div>
+    <span class="mdl-layout-title">MVC Lite</span>
+  </a>
+  <nav class="mdl-navigation">
+    <?php App::view('partials/navigation') ?>
+  </nav>
+</div>

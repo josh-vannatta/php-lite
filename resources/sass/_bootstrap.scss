@@ -1,0 +1,21 @@
+// Bootstrap
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+//-- utilities
+@import "~bootstrap/scss/utilities";
+//-- components
+@import '~bootstrap/scss/bootstrap-grid.scss';
+@import '~bootstrap/scss/alert';
+@import '~bootstrap/scss/breadcrumb';
+@import '~bootstrap/scss/nav';
+@import '~bootstrap/scss/type';
+
+// Material Design
+@import '~material-design-lite/dist/material.blue-indigo.min.css';
+
+// Animate.css
+@import '~animate.css/animate.min.css';
+
+// Prism.css
+@import './dist/prism.css';

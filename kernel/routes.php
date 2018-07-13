@@ -10,7 +10,7 @@
  */
 
 // Login Routes
-  $router->get('admin', 'LoginController@index');
+  $router->get('register', 'LoginController@index');
   $router->post('login', 'LoginController@login');
   $router->get('logout', 'LoginController@logout');
   $router->get('login/confirm', 'LoginController@confirm');
@@ -32,6 +32,7 @@
 
 // Home Routes
   $router->get('', 'HomeController@index');
-  $router->get('contact', 'HomeController@contact');
+  $router->get('migrate', 'HomeController@migrate');
+  $router->get('migrate-confirm', 'HomeController@migrateConfirm');
   $router->post('{from}/email', 'PublicController@contactEmail');
-  $router->get('error-404', 'HomeController@error');
+  $router->get('error/page/does/not/exist', 'HomeController@error');

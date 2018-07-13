@@ -1,20 +1,27 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="/assets/app.css">
-  </head>
-  <body>
-    <div class="container">
-      <?php
-        Migrate::users();
-        Migrate::passwordResets();
-        Migrate::sessions();
-        Migrate::autoLogins();
-      ?>
-      <h4>Hello world!</h4>
+<?php
+   App::view('layouts/master_top', [
+    'page_title' => 'Home Page',
+    'header_tabs' => 'home/partials/index-tabs'
+   ]);
+ ?>
+  <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+    <div class="page-content pt-5">
+      <?php App::view('home/content/documentation/overview') ?>
     </div>
-    <script type="text/javascript" src="/assets/app.js"></script>
-  </body>
-</html>
+  </section>
+  <section class="mdl-layout__tab-panel" id="scroll-tab-2">
+    <div class="page-content pt-5">
+      <?php App::view('home/content/documentation/database') ?>
+    </div>
+  </section>
+  <section class="mdl-layout__tab-panel" id="scroll-tab-3">
+    <div class="page-content pt-5">
+      <?php App::view('home/content/documentation/security') ?>
+    </div>
+  </section>
+  <section class="mdl-layout__tab-panel" id="scroll-tab-4">
+    <div class="page-content pt-5">
+      <?php App::view('home/content/documentation/front-end') ?>
+    </div>
+  </section>
+<?php App::view('layouts/master_bottom'); ?>

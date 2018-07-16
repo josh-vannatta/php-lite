@@ -4,7 +4,7 @@ class UsersController
 
   public function __construct()
   {
-    if (App::auth() == false)
+    if (!Request::equals(['/account/store']) && !App::auth())
       Redirect::url('/');
   }
 
@@ -14,37 +14,34 @@ class UsersController
     App::view('account/index', compact('users'));
   }
 
-  public function create()
-  {
-    App::view('account/create');
-  }
-
   public function store()
   {
     $request = Request::all();
     $validator = new Validator($request, [
-      'name' => 'required',
+      'first' => 'required',
+      'last' => 'required',
       'email' => 'required|email',
-      'password' => 'required'
+      'password' => 'required|min:8'
     ]);
 
-    if ($validator->fails())
+    if ($validator->fails() || $request['password'] !== $request['passwordconfirm'])
        Redirect::back([
          'input_data' => $request,
          'errors' => $validator->errors
        ])
      ;
 
-    $user = new User();
-    $user->define([
-      'id' => generate_token($request['email']),
-      'name' => $request['name'],
-      'email' => $request['email'],
-      'password' => password_hash($request['password'], PASSWORD_DEFAULT)
-    ]);
+   $user = new User();
+   $user->define([
+     'id' => generate_token($request['email']),
+     'name' => $request['first'].' '.$request['last'],
+     'email' => $request['email'],
+     'password' => password_hash($request['password'], PASSWORD_DEFAULT)
+   ]);
 
-    App::database('users')->insert($user);
-    Redirect::url("/account/$user->email");
+   App::database('users')->insert($user);
+   login($user->email);
+   Redirect::url("/");
   }
 
   public function edit($email)
@@ -67,7 +64,7 @@ class UsersController
        Redirect::back([
          'input_data' => $request,
          'errors' => $validator->errors
-       ]);``
+       ]);
 
     $user = new Admin();
     $user->define([

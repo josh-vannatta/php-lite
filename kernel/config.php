@@ -35,9 +35,9 @@ return [
     'model' => 'users',
     'unique_key' => 'email',
     'session' => [
-      'name' => 'dg_m2c2',
-      'user' => 'cpssnr',
-      'key' => 'assessment',
+      'name' => 'php_lite',
+      'user' => 'user',
+      'key' => 'id',
     ],
   ],
 

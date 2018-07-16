@@ -18,6 +18,9 @@
 
 .mdl-layout__tab {
   color: rgba(0,0,0,0.6) !important;
+  &:hover {
+    color: rgba(0,0,0,0.8) !important;
+  }
 }
 
 .mdl-layout__tab.is-active {
@@ -35,6 +38,9 @@
     background: rgba(0,0,0,0);
     left: 0;
     bottom: 0;
+  }
+  &:hover {
+    color: rgba(0,0,0,0.8) !important;
   }
 }
 

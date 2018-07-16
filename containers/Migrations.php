@@ -11,7 +11,6 @@ class Migrate
         'email' => 'VARCHAR(128) NOT NULL',
         'expiry' => 'INT(11)'
       ]);
-      echo "Password resets table created!<br />";
     } catch (\Exception $e) {
       dd($e);
     }
@@ -23,15 +22,14 @@ class Migrate
     // Create users table
     try {
       App::database()->migrate('users', [
-        'id' => 'INT(11) NOT NULL AUTO_INCREMENT',
+        'id' => 'CHAR(8)',
         'name' => 'VARCHAR(128)',
         'email' => 'VARCHAR(128) UNIQUE',
         'password' => 'VARCHAR(128)',
-        'created_at' => 'TIMESTAMP NOT NULL',
+        'created_at' => 'TIMESTAMP NOT NULL DEFAULT NOW()',
         'updated_at' => 'TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW()',
         'PRIMARY KEY' => '(id)'
       ]);
-      echo "Users table created!<br />";
     } catch (\Exception $e) {
       dd($e);
     }
@@ -47,7 +45,6 @@ class Migrate
         'data' => 'TEXT NOT NULL',
         'PRIMARY KEY' => '(sid)'
       ]);
-      echo "Session table created!<br />";
     } catch (\Exception $e) {
       dd($e);
     }
@@ -58,13 +55,12 @@ class Migrate
     // Create autologins table
     try {
       App::database()->migrate('autologin', [
-        'user_key' => 'CHAR(8) NOT NULL',
+        App::session('key') => 'CHAR(8) NOT NULL',
         'token' => 'CHAR(32) NOT NULL',
         'data' => 'TEXT',
-        'created_at' => 'TIMESTAMP NOT NULL',
-        'used' => 'TINYINT(1) NOT NULL'
+        'created_at' => 'TIMESTAMP NOT NULL DEFAULT NOW()',
+        'used' => 'TINYINT(1) NOT NULL DEFAULT 0'
       ]);
-      echo "Autologin table created!<br />";
     } catch (\Exception $e) {
       dd($e);
     }

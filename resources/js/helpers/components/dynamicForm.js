@@ -1,40 +1,52 @@
+let approve = require('approvejs');
+
 const dynamicForm = (function() {
   'use strict';
   let _this = {
     bind: bind,
-    addValidation: addValidation
+    addValidation: addValidation,
+    errorElement: 'span',
+    classes: {
+      error: 'has-error',
+      valid: 'valid',
+      invalid: 'invalid',
+      pristine: 'pristine',
+      dirty: 'dirty',
+      disabled: 'disabled'
+    }
   }
 
   function bind(el, config) {
     let form = config.data;
     let callback = config.onSubmit;
+    let controls = {};
     for (let input in form) {
-      form[input]['state'] = ['pristine'];
-      form[input]['element'] = $(el.find(`[name=${input}]`)[0]);
-      form[input]['value'] = form[input].element.val();
-      form[input].element.keyup(function() {
-        if (!keyTimers[input]) keyTimeout(input, 100)
-          .then( validateInput(form[input])
+      controls[input] = form[input];
+      controls[input]['state'] = [this.classes.pristine];
+      controls[input]['element'] = $(el.find(`[name=${input}]`)[0]);
+      controls[input]['value'] = controls[input].element.val();
+      controls[input].element.keyup(function() {
+        if (!keyTimers[input]) keyTimeout(controls[input], 100)
+          .then( validateInput(controls[input])
           .then( validateForm(form)) );
       });
-      form[input].element.blur(function() {
-        let pristine = form[input].state.indexOf('pristine');
-        if (pristine >= 0) form[input].state[pristine] = 'dirty';
-        validateInput(form[input]).then(validateForm(form));
+      controls[input].element.blur(function() {
+        let pristine = controls[input].state.indexOf(dynamicForm.classes.pristine);
+        if (pristine >= 0) controls[input].state[pristine] = dynamicForm.classes.dirty;
+        validateInput(controls[input]).then(validateForm(form));
       });
-      validateInput(form[input]);
+      delete(form[input]);
     }
-    form['state'] = ['pristine'];
+    form['controls'] = controls;
+    form['state'] = [this.classes.pristine];
     form['element'] = el;
     let button = $(el.find(`[type='submit']`)[0]);
     if (button) {
-      button.addClass('disabled');
-      button.attr('disabled', 'disabled');
       form['submit'] = button;
       form.submit.click(e=>callback(constructForm(e, form)));
     }
     form.element.submit(e=>callback(constructForm(e, form)));
-    validateForm(form, true);
+    form.element.addClass(dynamicForm.classes.pristine);
   }
 
     let keyTimers = {};
@@ -50,35 +62,46 @@ const dynamicForm = (function() {
 
   function constructForm(event, form) {
     event.preventDefault();
+    for (let i in form.controls) {
+        let input = form.controls[i];
+        let p = input.state.indexOf(dynamicForm.classes.pristine);
+        if (p >= 0) input.state[p] = dynamicForm.classes.dirty;
+        validateInput(input);
+    }
+    let pristine = form.state.indexOf(dynamicForm.classes.pristine);
+    if (pristine >= 0) form.state[pristine] = dynamicForm.classes.dirty;
     if (!validateForm(form)) return false;
     let formData = {};
     let inputs = form.element.find('input');
-    for (let i = 0; i < inputs.length; i++) {
-      formData[inputs[i].name] = inputs[i].value;
+    for (let j = 0; j < inputs.length; j++) {
+      formData[inputs[j].name] = inputs[j].value;
     }
     return formData;
   }
 
-  function redundant(input) {
-      return input == 'state' || input == 'element' || input == 'submit';
-  }
-
   function setState(input, test) {
+    let __this = dynamicForm;
     if (!test) {
-      let valid = input.state.indexOf('valid');
-      if (valid >= 0) input.state[valid] = 'invalid';
-      else if ( input.state.includes('invalid') ) return;
-      else input.state.push('invalid');
+      let valid = input.state.indexOf(__this.classes.valid);
+      if (valid >= 0) input.state[valid] = __this.classes.invalid;
+      else if ( input.state.includes(__this.classes.invalid) ) return;
+      else input.state.push(__this.classes.invalid);
       return;
     }
-    let invalid = input.state.indexOf('invalid');
-    if (invalid >= 0)input.state[invalid] = 'valid';
-    else if ( input.state.includes('valid') ) return;
-    else input.state.push('valid');
+    let invalid = input.state.indexOf(__this.classes.invalid);
+    if (invalid >= 0)input.state[invalid] = __this.classes.valid;
+    else if ( input.state.includes(__this.classes.valid) ) return;
+    else input.state.push(__this.classes.valid);
   }
 
   function setClass(element, input) {
-    element.removeClass('pristine dirty valid invalid');
+    let __this = dynamicForm;
+    element.removeClass(`
+      ${__this.classes.pristine}
+      ${__this.classes.dirty}
+      ${__this.classes.valid}
+      ${__this.classes.invalid}
+    `);
     element.addClass(input.state.join(' '))
   }
 
@@ -120,30 +143,31 @@ const dynamicForm = (function() {
     setState(input, result.approved);
     setClass(parent, input);
     return validateAsync(input, result).then(response=>{
-      if ((!result.approved || !response) && input.state.includes('dirty')) {
-        parent.addClass('has-error');
+      let __this = dynamicForm;
+      if ((!result.approved || !response) && parent.hasClass('dirty')) {
+        parent.addClass(__this.classes.error);
         errors.html(renderErrors(input.error, result));
         return;
       }
       errors.html('');
-      parent.removeClass('has-error');
+      parent.removeClass(__this.classes.error);
     });
   }
 
   function validateForm(form, init = false) {
     let valid = true;
-    for (var input in form) {
-      if (redundant(input)) continue;
-      if (form[input].state.includes('invalid')) valid = false;
+    let __this = dynamicForm;
+    for (var input in form.controls) {
+      if (form.controls[input].state.includes(__this.classes.invalid)) valid = false;
     }
-    let pristine = form.state.indexOf('pristine');
-    if (pristine >= 0 && !init) form.state[pristine] = 'dirty';
+
+    let pristine = form.state.indexOf(__this.classes.pristine);
     if (valid) {
-      form.submit.removeClass('disabled');
+      form.submit.removeClass(__this.classes.disabled);
       form.submit.attr('disabled', false);
-    } else {
-      form.submit.addClass('disabled');
-      form.submit.attr('disabled', false);
+    } else if (!valid && pristine == -1) {
+      form.submit.addClass(__this.classes.disabled);
+      form.submit.attr('disabled', true);
     }
     setState(form, valid);
     setClass(form.element, form);
@@ -151,12 +175,16 @@ const dynamicForm = (function() {
   }
 
   function renderErrors(errors, result) {
-    let errorHTML = message => `<small class="text-danger">${message}</small>`
+    let errorHTML = message => `
+      <${dynamicForm.errorElement} class="text-danger">
+        ${message}
+      </${dynamicForm.errorElement}>
+    `
     if (typeof errors == 'string') return errorHTML(errors);
     for (let error in errors) {
       if (!result[error].approved) {
         return errorHTML(errors[error]);
-        break
+        break;
       }
     }
   }
@@ -174,7 +202,11 @@ let createForm = {
       required: 'Email is required',
       email: 'Please provide a valid email',
       newRule: 'Do a thing'},
-    rules: { required: true, email: true, newRule: {foo: 4, bar: 5} }
+    rules: { required: true, email: true, newRule: {foo: 4, bar: 5} },
+    async: [
+      { url: '/exists', callback: r => { return r == true; } },
+      { url: '/valid', callback: r => { return r != false; }}
+    ]
   },
   password: {
     error: 'The password you provided is invalid',

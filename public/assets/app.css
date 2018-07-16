@@ -3629,6 +3629,19 @@ mark,
   .blockquote-footer::before {
     content: "\2014   \A0"; }
 
+.mdl-textfield {
+  width: 100%; }
+
+.mdl-textfield.has-error .mdl-textfield__error {
+  visibility: visible; }
+
+.mdl-textfield.has-error .mdl-textfield__input {
+  border-color: #d50000;
+  box-shadow: none; }
+
+.mdl-textfield.has-error .mdl-textfield__label:after {
+  background-color: #d50000; }
+
 body {
   color: #3a3a3a; }
 
@@ -3636,10 +3649,19 @@ body * {
   font-family: "Roboto", sans-serif; }
 
 a {
-  color: #2c9ab7;
-  text-decoration: none !important; }
+  color: #007bff;
+  text-decoration: none !important;
+  font-weight: 400; }
   a:hover {
-    color: #2c9ab7; }
+    color: #007bff;
+    font-weight: 500; }
+
+a.blank, .blank > a {
+  opacity: .8;
+  color: black; }
+  a.blank:hover, .blank > a:hover {
+    opacity: 1;
+    color: #000; }
 
 code {
   padding: 3px;
@@ -3758,6 +3780,16 @@ footer {
   justify-content: center !important;
   align-items: center !important; }
 
+.flex-align-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important; }
+
+.flex-align-column {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important; }
+
 .with-header {
   margin-top: 58px; }
 
@@ -3770,6 +3802,130 @@ footer {
 
 .w-0 {
   width: 0 !important; }
+
+.has-error label, .has-error .label {
+  color: #dc3545 !important; }
+
+.has-error .checkmark, .has-error .radio {
+  border: 1px solid #dc3545; }
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  height: 20px;
+  padding-left: 28px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 15px;
+  font-weight: 300; }
+
+/* Hide the browser's default checkbox */
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer; }
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee; }
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark {
+  background-color: #ccc; }
+
+/* When the checkbox is checked, add a blue background */
+.checkbox input:checked ~ .checkmark {
+  background-color: #007bff; }
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none; }
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after {
+  display: block; }
+
+/* Style the checkmark/indicator */
+.checkbox .checkmark:after {
+  left: 8px;
+  top: 4px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg) scale(1.2);
+  transform: rotate(45deg) scale(1.2);
+  -ms-transform: rotate(45deg) scale(1.2); }
+
+/* Customize the label (the container) */
+.radio-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  height: 23px;
+  padding-left: 31px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 15px;
+  font-weight: 300; }
+
+/* Hide the browser's default radio button */
+.radio-box input {
+  position: absolute;
+  opacity: 0; }
+
+/* Create a custom radio button */
+.radio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 23px;
+  width: 23px;
+  background-color: #eee;
+  border-radius: 50%; }
+
+/* On mouse-over, add a grey background color */
+.radio-box:hover input ~ .radio {
+  background-color: #ccc; }
+
+/* When the radio button is checked, add a blue background */
+.radio-box input:checked ~ .radio {
+  background-color: #007bff; }
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio:after {
+  content: "";
+  position: absolute;
+  display: none; }
+
+/* Show the indicator (dot/circle) when checked */
+.radio-box input:checked ~ .radio:after {
+  display: block; }
+
+/* Style the indicator (dot/circle) */
+.radio-box .radio:after {
+  top: 8px;
+  left: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white; }
 
 .\--responsive label {
   font-weight: 600 !important;
@@ -4141,6 +4297,79 @@ input:checked + .slider:after {
   padding: 10px 15px;
   color: #ea5b5b; }
 
+.display-5 {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2; }
+
+.light-weight {
+  font-weight: 300 !important; }
+
+.normal {
+  font-weight: 500 !important; }
+
+.heavy-weight {
+  font-weight: 600 !important; }
+
+.over-weight {
+  font-weight: 900 !important; }
+
+.italic {
+  font-style: italic !important; }
+
+.wide {
+  letter-spacing: .2rem;
+  line-height: 1.5; }
+
+.uppercase {
+  text-transform: uppercase; }
+
+.light-grey {
+  color: #737478; }
+
+.loading-overlay {
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 20; }
+
+.loader.top-bar {
+  height: 4px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #ddd; }
+
+.loader.top-bar:before {
+  display: block;
+  position: absolute;
+  content: "";
+  left: -200px;
+  width: 200px;
+  height: 4px;
+  background-color: #2980b9;
+  animation: loading-bar 2s linear infinite; }
+
+@keyframes loading-bar {
+  from {
+    left: -200px;
+    width: 30%; }
+  50% {
+    width: 30%; }
+  70% {
+    width: 70%; }
+  80% {
+    left: 50%; }
+  95% {
+    left: 120%; }
+  to {
+    left: 100%; } }
+
+.passive-password {
+  opacity: .3;
+  color: black; }
+  .passive-password:hover {
+    opacity: .8;
+    color: black; }
+
 .mdl-layout__tab-bar, .\--header,
 .mdl-layout__tab-bar-button {
   background: white;
@@ -4155,6 +4384,8 @@ input:checked + .slider:after {
 
 .mdl-layout__tab {
   color: rgba(0, 0, 0, 0.6) !important; }
+  .mdl-layout__tab:hover {
+    color: rgba(0, 0, 0, 0.8) !important; }
 
 .mdl-layout__tab.is-active {
   color: black !important; }
@@ -4170,6 +4401,8 @@ input:checked + .slider:after {
     background: rgba(0, 0, 0, 0);
     left: 0;
     bottom: 0; }
+  .mdl-layout__header-row .mdl-navigation__link:hover {
+    color: rgba(0, 0, 0, 0.8) !important; }
 
 .mdl-layout.is-upgraded .mdl-layout__tab.is-active::after {
   background: #666; }
@@ -4188,3 +4421,11 @@ input:checked + .slider:after {
   max-height: fit-content; }
   .\--content-sidebar .list-unstyled li {
     margin-bottom: 5px; }
+
+.\--auth-surround {
+  width: 450px; }
+  .\--auth-surround .\--auth-container {
+    min-width: 100%;
+    min-height: 500px;
+    overflow: hidden;
+    position: relative; }

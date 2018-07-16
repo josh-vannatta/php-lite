@@ -2,11 +2,11 @@ const homeController = (function() {
   'use strict';
 
   let _this = {
-    load: onLoad
+    index: index
   }
 
-  function onLoad() {
-    console.log('foo');
+  function index() {
+    console.log('Home controller working!');
   }
 
   return _this;

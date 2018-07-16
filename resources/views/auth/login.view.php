@@ -1,65 +1,53 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="google-signin-client_id" content="1057328742202-ikmjmc9vksnfve0c1vm78i0oopmsbdb7.apps.googleusercontent.com">
-    <meta name="google-signin-scope" content="https://www.googleapis.com/auth/analytics.readonly">
-    <title>Admin | Login</title>
-    <link rel="stylesheet" href="/assets/css/master.css">
-    <link rel="stylesheet" href="/assets/css/fonts.css">
-    <link rel="stylesheet" href="/assets/css/admin.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script type="text/javascript" rel="javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" rel="javascript" src="/assets/js/admin/bootstrap.min.js"></script>
-    <script type="text/javascript" rel="javascript" src="/assets/js/chart.js"></script>
-    <script type="text/javascript" rel="javascript" src="/assets/js/helper-functions.js"></script>
-    <script type="text/javascript" rel="javascript" src="/assets/js/form-scrubber.js"></script>
-  </head>
-  <body class="--login-body">
-    <header>
-      <a href="/" class="--transition">RETURN TO MAIN SITE</a>
-    </header>
-    <main>
-      <div class="--login-module">
-        <div class="--secure">
-          <i class="material-icons">lock</i>
+<?php
+   App::view('layouts/auth_top', [
+    'page_title' => 'Log in | MVC Lite'
+   ]);
+ ?>
+
+  <section class="--auth-surround m-auto h-100 flex-center">
+    <div class="--auth-container z-depth-1 rounded p-5">
+      <div class="--auth-content">
+        <div class="flex-align-row">
+          <div class="--icon mr-2" style="width: 25px">
+            <img src="<?= base_url(); ?>/assets/favicon/android-chrome-512x512.png" class="w-100"></img>
+          </div>
+          <h5 class="m-0" style="opacity: .8">MVC Lite</h5>
         </div>
-        <h3>ADMINISTRATOR</h3>
-        <p style="text-align: center">Please sign in to gain access</p>
-        <?php App::view('partials/errors') ?>
-        <?php App::view('partials/messages') ?>
-        <form id="create-news-form" method="post"
-          style="letter-spacing: 0" action="/admin/login"
-          fs--form fs--listen="<?php if (session('input_data')) echo 'now' ?>">
-            <div class="form-group --responsive">
-              <label for="title">Email</label>
-              <input type="text" class="form-control"
-                name="email"
-                placeholder="Email"
-                fs--input="Email"
-                fs--rules="required|email|user_exists"
-                value="<?= session('input_data', 'email') ?>">
+        <h3 class="display-5">Sign in</h3>
+        <p class="lead">To access your user profile</p>
+        <form action="#" id="login-form">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-group">
+            <input class="mdl-textfield__input" type="text" name="email">
+            <label class="mdl-textfield__label" for="sample4">Email</label>
+            <span class="mdl-textfield__error error-messages"></span>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label form-group">
+            <div class="flex-align-row">
+              <input class="mdl-textfield__input" type="password" name="password" id="register-pass">
+              <a class="ml-2 passive-password" href="javascript:;">
+                <i class="material-icons">visibility_off</i>
+              </a>
             </div>
-            <div class="form-group --responsive">
-              <label for="title">Password</label>
-              <input type="password" class="form-control"
-                name="password"
-                placeholder="Password"
-                fs--input="Password"
-                fs--rules="required"
-                value="<?= session('input_data', 'password') ?>">
-            </div>
-            <div class="form-check" style="margin-bottom: 15px">
-              <input class="form-check-input" name="remember" type="checkbox" value="" id="defaultCheck1" style="height: 12px">
-              <label class="form-check-label" for="defaultCheck1">
-                Remember me
+            <label class="mdl-textfield__label" for="sample4">Password</label>
+            <span class="mdl-textfield__error error-messages"></span>
+          </div>
+          <div class="flex-align-row justify-content-between my-3 mb-5">            
+            <div class="form-group">
+              <label class="checkbox">Remember me
+                <input type="checkbox" name="remember">
+                <span class="checkmark"></span>
               </label>
             </div>
-            <button type="submit" class="--button-gen --transition" fs--button>Submit</button>
-          </form>
-          <a href="/admin/forgot-password" class="--link-basic" style="font-style:normal">I forgot my password</a>
+            <a href="<?= base_url(); ?>/reset-password">Forgot your password?</a>
+          </div>
+          <div class="flex-align-row justify-content-between my-4">
+            <a href="<?= base_url(); ?>/register" class="text-primary">Create account</a>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored primary" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
-    </main>
-    <script type="text/javascript" rel="javascript" src="/assets/js/admin/main.js"></script>
-  </body>
-</html>
+    </div>
+  </section>
+<?php App::view('layouts/auth_bottom'); ?>

@@ -1,3 +1,5 @@
+import { ENV } from '../../env';
+
 const http = (function() {
   'use strict';
   let _this = {

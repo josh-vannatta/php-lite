@@ -1,6 +1,6 @@
 <?php
    App::view('layouts/master_top', [
-    'page_title' => 'Home Page'
+    'page_title' => 'Migrations | MVC Lite'
    ]);
  ?>
   <section class="mdl-layout__tab-panel is-active">

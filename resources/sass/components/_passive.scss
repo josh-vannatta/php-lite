@@ -1,0 +1,8 @@
+.passive-password {
+  opacity: .3;
+  color: black;
+  &:hover {
+    opacity: .8;
+    color: black;
+  }
+}

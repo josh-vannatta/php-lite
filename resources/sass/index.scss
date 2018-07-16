@@ -9,9 +9,19 @@
 @import "variables";
 
 // Partials
+@import "./partials/reset";
 @import "./partials/base";
+@import "./partials/buttons";
+@import "./partials/forms";
 @import "./partials/form-secure";
-@import "./partials/header";
+@import "./partials/typography";
+@import "./partials/loaders";
+
 
 // Components
+@import "./Components/passive";
+
+// Content
+@import "./content/header";
 @import "./content/sections";
+@import "./content/auth";

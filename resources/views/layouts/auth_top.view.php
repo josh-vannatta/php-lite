@@ -32,6 +32,5 @@
   </head>
   <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <?php App::view('partials/header', compact('header_tabs')) ?>
       <main id="app" class="mdl-layout__content">
-         <div class="container">
+         <div class="abs-full">

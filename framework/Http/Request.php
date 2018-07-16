@@ -58,6 +58,12 @@ class Request
 
   static public function equals($value)
   {
+    if (is_array($value)) {
+      foreach ($value as $uri) {
+        if ($_SERVER['REQUEST_URI'] === $uri) return true;
+      }
+      return false;
+    }
     return $_SERVER['REQUEST_URI'] === $value;
   }
 

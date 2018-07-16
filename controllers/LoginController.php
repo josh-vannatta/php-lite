@@ -4,12 +4,12 @@ class LoginController
 
   public function index()
   {
-    App::view('login');
+    App::view('auth/login');
   }
 
   public function create()
   {
-    App::view('register');
+    App::view('auth/register');
   }
 
   public function login()
@@ -27,12 +27,12 @@ class LoginController
      ])
    ;
 
-    $admin = App::database('admins')->where('email', '=', $request['email'])[0];
+    $user = App::database('users')->where('email', '=', $request['email'])[0];
 
-    if (property_exists($admin, 'password') &&
-        password_verify($request['password'], $admin->password)) {
-        login($admin->email);
-        return Redirect::url('/admin/dashboard');
+    if ($user && property_exists($user, 'password') &&
+        password_verify($request['password'], $user->password)) {
+        App::login($user->email);
+        return Redirect::url('/');
       }
     ;
 
@@ -54,7 +54,7 @@ class LoginController
     $params['lifetime'] = time() - 86400;
     setcookie(session_name(), '', ...array_values($params));
     session_destroy();
-    Redirect::url('/admin');
+    Redirect::url('/');
   }
 
   public function confirm()

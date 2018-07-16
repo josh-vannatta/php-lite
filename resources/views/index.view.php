@@ -1,6 +1,6 @@
 <?php
    App::view('layouts/master_top', [
-    'page_title' => 'Home Page',
+    'page_title' => 'Welcome | MVC Lite',
     'header_tabs' => 'home/partials/index-tabs'
    ]);
  ?>

@@ -14,7 +14,7 @@
     <div class="mdl-layout-spacer"></div>
     <!-- Search Bar -->
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                mdl-textfield--floating-label mdl-textfield--align-right">
+                mdl-textfield--floating-label mdl-textfield--align-right" style="width: auto">
       <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
         <i class="material-icons">search</i>
       </label>
@@ -23,17 +23,24 @@
       </div>
     </div>
     <!-- Account actions  -->
+    <?php if (!App::auth()): ?>
+    <a href="<?= base_url(); ?>/login" class="mdl-layout__tab">Sign In</a>
+    <?php else: ?>
     <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
       <i class="material-icons">account_circle</i>
     </button>
     <!-- Account submenu -->
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
         for="demo-menu-lower-right">
-      <li class="mdl-menu__item" id="app-login-select">Login</li>
-      <li class="mdl-menu__item" id="app-register-select">Create account</li>
-      <li disabled class="mdl-menu__item">Sign out</li>
+      <li class="mdl-menu__item blank" id="app-login-select">
+        <a href="#">My Account</a>
+      </li>
+      <li class="mdl-menu__item blank">
+        <a href="<?= base_url(); ?>/logout">Sign out</a>
+      </li>
     </ul>
-  </div>
+  <?php endif; ?>
+</div>
   <!-- Tabs -->
   <?php if (isset($header_tabs)) App::view($header_tabs); ?>
 </header>

@@ -53,11 +53,11 @@ class App
 
   public static function authenticate($unique_key)
   {
-    $authenticated = static::$registry['config']['app'];
-    $validated = static::database($authenticated['model'])
+    $auth = static::$registry['config']['auth'];
+    $validated = static::database($auth['model'])
       ->where($auth['unique_key'], '=', $unique_key)[0];
 
-    static::$registry['authenticated'] = $authenticated;
+    static::$registry['authenticated'] = $validated;
   }
 
 
@@ -81,10 +81,10 @@ class App
     return false;
   }
 
-  public static function login($unique_key)
+  public static function login($user)
   {
     session_regenerate_id(true);
-    $_SESSION[static::session('key')] = $unique_key;
+    $_SESSION[static::session('user')] = $user;
     $_SESSION['authenticated'] = true;
     if (isset($_POST['remember'])) {
       $auto_login = new AutoLogin(

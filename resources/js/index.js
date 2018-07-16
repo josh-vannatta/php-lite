@@ -3,15 +3,14 @@ require('./bootstrap');
 // Modules
 import { ENV } from './env';
 import { routes } from './routes';
-import { dynamicForm, formatMasks, http, JSX } from './helpers/module';
-import { googleMaps, instagram } from './apis/module';
 
 // Elements
 import { coreElements } from './elements/coreElements';
 import { passiveElements } from './elements/passiveElements';
 
 // Controllers
-import { homeController, contactController } from './home/module';
+import { homeController } from './controllers/homeController';
+import { loginController } from './controllers/loginController';
 
 // Lifecycle
 $(document).ready(function(){
@@ -22,7 +21,7 @@ $(document).ready(function(){
   let search = window.location.search.replace('?', '').split('&');
   search.forEach(term => {
     let binding = term.split('=');
-    ENV.GET[binding[0]] = binding;[1];
+    ENV.GET[binding[0]] = binding[1];
   })
 
   // Elements

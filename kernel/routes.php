@@ -9,10 +9,18 @@
  * sessions and password resets, then **delete them**.
  */
 
+
+// Home Routes
+ $router->get('', 'HomeController@index');
+ $router->get('home', 'HomeController@index');
+ $router->get('migrate', 'HomeController@migrate');
+ $router->get('migrate-confirm', 'HomeController@migrateConfirm');
+ $router->get('error/page/does/not/exist', 'HomeController@error');
+
 // Login Routes
   $router->get('register', 'LoginController@create');
   $router->get('login', 'LoginController@index');
-  $router->post('login', 'LoginController@store');
+  $router->post('login', 'LoginController@login');
   $router->get('logout', 'LoginController@logout');
   $router->get('login/confirm', 'LoginController@confirm');
 
@@ -30,9 +38,3 @@
   $router->post('account/update', 'UsersController@update');
   $router->post('account/update_password', 'UsersController@update_password');
   $router->post('account/delete', 'UsersController@destroy');
-
-// Home Routes
-  $router->get('', 'HomeController@index');
-  $router->get('migrate', 'HomeController@migrate');
-  $router->get('migrate-confirm', 'HomeController@migrateConfirm');
-  $router->get('error/page/does/not/exist', 'HomeController@error');

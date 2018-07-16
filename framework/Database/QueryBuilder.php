@@ -60,6 +60,10 @@ class QueryBuilder
 
   public function migrate($table, $data)
   {
+    if ($this->contains($table)) {
+      echo "Table $table already exists!<br />";
+      return false;
+    }
     $columns = '';
     $len = count($data);
     foreach ($data as $field => $type) {
@@ -67,7 +71,8 @@ class QueryBuilder
       if (--$len !== 0) $columns.=', ';
     }
     $query = $this->pdo->prepare("CREATE TABLE IF NOT EXISTS $table ($columns)");
-    return $query->execute();
+    $query->execute();
+    echo "Table $table created!<br />";
   }
 
   public function getPage($start, $count)

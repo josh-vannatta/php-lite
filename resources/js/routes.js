@@ -1,9 +1,10 @@
 const routes = (function() {
   'use strict';
   return [
-    { path: '/', controller: 'homeController@load' },
-    { path: '/home', controller: 'homeController@load' },
-    { path: '/contact', controller: 'contactController@load' }
+    { path: '/', controller: 'homeController@index' },
+    { path: '/home', controller: 'homeController@index' },
+    { path: '/register', controller: 'loginController@create'},
+    { path: '/login', controller: 'loginController@index'}
   ];
 
 }());

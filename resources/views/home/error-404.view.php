@@ -1,6 +1,6 @@
 <?php
    App::view('layouts/master_top', [
-    'page_title' => 'Home Page'
+    'page_title' => 'Error | MVC Lite'
    ]);
  ?>
  <div class="container py-5">

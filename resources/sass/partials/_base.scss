@@ -7,10 +7,21 @@ body * {
 }
 
 a {
-  color: $link;
+  color: $primary;
   text-decoration: none !important;
+  font-weight: 400;
   &:hover {
-    color: $link;
+    color: $primary;
+    font-weight: 500;
+  }
+}
+
+a.blank, .blank > a {
+  opacity: .8;
+  color: black;
+  &:hover {
+    opacity: 1;
+    color: $black;
   }
 }
 
@@ -30,8 +41,6 @@ pre > code {
   box-shadow: 0 0 !important;
   background-image: none !important;
 }
-
-
 
 pre[class*="language-"]:before, pre[class*="language-"]:after {
   display: none !important;
@@ -158,6 +167,18 @@ footer {
 .flex-center {
   display: flex !important;
   justify-content: center !important;
+  align-items: center !important;
+}
+
+.flex-align-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+.flex-align-column {
+  display: flex !important;
+  flex-direction: column !important;
   align-items: center !important;
 }
 

@@ -84,6 +84,11 @@ class AutoLogin
     public function __construct(\PDO $db, $token_index = 0)
     {
         $this->db = $db;
+        $this->cookie = App::get('config')['auth']['session']['name'];
+        $this->table_users = App::get('config')['auth']['model'];
+        $this->col_akey = App::get('config')['auth']['session']['key'];
+        $this->sess_uname =  App::get('config')['auth']['session']['user'];
+        $this->sess_ukey = App::get('config')['auth']['session']['key'];
         if ($this->db->getAttribute(\PDO::ATTR_ERRMODE) !== \PDO::ERRMODE_EXCEPTION) {
             $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
@@ -274,6 +279,7 @@ class AutoLogin
     {
         // Separate the username and submitted token
         $parts = explode('|', $_COOKIE[$this->cookie]);
+
         $_SESSION[$this->sess_uname] = $parts[0];
         $token = $parts[1];
 

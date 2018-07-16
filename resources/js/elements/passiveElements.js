@@ -86,6 +86,18 @@ const passiveElements = (function() {
       _this.parent.css('height', _this.head.outerHeight() - 2 + 'px');
       _this.parent.css('min-height', 'unset');
       _this.parent.css('overflow', 'hidden');
+    });
+    // Password hide / reveal
+    $('.passive-password').click(function() {
+      let i = $(this).find('.material-icons');
+      let input = $(this).prev();
+      if (i.html().indexOf('visibility_off') >= 0) {
+        i.html('visibility');
+        input.attr('type', 'text');
+        return;
+      }
+      i.html('visibility_off');
+      input.attr('type', 'password');
     })
   }
 

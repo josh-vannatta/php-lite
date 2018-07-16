@@ -1,0 +1,9 @@
+.--auth-surround {
+  width: 450px;
+  .--auth-container {
+    min-width: 100%;
+    min-height: 500px;
+    overflow: hidden;
+    position: relative;
+  }
+}
